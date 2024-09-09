@@ -1,6 +1,6 @@
 # TUGAS 2 PBP: Membuat E-Commerce 
 ## Welcome To LaRizzManizz!
-Look at my E-Commerce --> [LaRizz Manizz]([https://pages.github.com/](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/))
+Look at my E-Commerce --> [LaRizz Manizz](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/)
 Nama: Madeline Clairine Gultom
 NPM: 2306207846
 PBP D

@@ -29,3 +29,4 @@ Routing URL pada aplikasi main sudah dilakukan pada (3.), sehingga sekarang dapa
 Menghubungkan dengan PWS dengan membuat project baru, serta menghubungkan melalui memasukkan url ke ALLOWED_HOSTS di settings.py agar dapat diakses dan melakukan push ke pws setelah proyek berhasil dan jika ke depannya ada _updates_.
 
 ### 8. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+![Bagan Tugas 2 PBP]("C:\Users\Madeline\Desktop\TP-2\PBP TUGAS 2.png")

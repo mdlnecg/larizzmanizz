@@ -29,7 +29,7 @@ Routing URL pada aplikasi main sudah dilakukan pada (3.), sehingga sekarang dapa
 Menghubungkan dengan PWS dengan membuat project baru, serta menghubungkan melalui memasukkan url ke ALLOWED_HOSTS di settings.py agar dapat diakses dan melakukan push ke pws setelah proyek berhasil dan jika ke depannya ada _updates_.
 
 ### 8. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
-<img width="1607" alt="PBP TUGAS 2 (1)" src="https://github.com/user-attachments/assets/9804aa54-4340-4711-94c8-7db56b120139">
+<img width="1607" alt="PBP TUGAS 2 (2)" src="https://github.com/user-attachments/assets/1f77bd80-89b4-4b39-9929-98e6f85119f1">
 
 ### 9. Jelaskan fungsi git dalam pengembangan perangkat lunak!
 GIT merupakan tools yang digunakan developer dan programmer sebagai control system untuk pengembangan software. Adapun fungsi utamanya adalah untuk melacak perubahan pada kode sumber, berkolaborasi antardeveloper, dan menjaga riwayat pengembangan perangkat lunak secara sistematis.

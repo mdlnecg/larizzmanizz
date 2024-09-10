@@ -8,10 +8,12 @@
     <!-- Loop untuk menampilkan produk-produk dari context -->
     {% for product in products %}
         <div class="product">
-            <p>{{ product.name }}</p>
+            <p><strong>{{ product.name }}</strong></p>
             <p>Rp{{ product.price }}</p>
             <p>{{ product.description }}</p>
             <p>{{ product.rating }}</p>
         </div>
+
+        <br>
     {% endfor %}
 </div>

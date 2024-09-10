@@ -1,58 +1,21 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaRizzManizz</title>
 
-    <!-- CSS untuk menata layout -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center; /* Teks utama tetap di tengah */
-        }
+<h1>Welcome to LaRizzManizz!</h1>
+<p>Ready to RIZZ your heart with our cooKIEZZ</p>
 
-        /* Mengatur layout container */
-        .menu-container {
-            display: flex; /* Mengaktifkan Flexbox */
-            justify-content: space-around; /* Menu disebar ke kiri dan kanan */
-            margin-top: 40px; /* Jarak antara teks dan menu */
-        }
-
-        /* Style untuk setiap produk */
-        .product {
-            width: 45%; /* Ukuran relatif setiap produk (45% dari lebar halaman) */
-            text-align: center; /* Pastikan teks dalam produk tetap di tengah */
-        }
-
-        /* Ukuran gambar produk */
-        .product-image {
-            width: 300px; 
-            height: auto;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to LaRizzManizz!</h1>
-    <p>Ready to RIZZ your heart with our cooKIEZZ</p>
-
-    <!-- Kontainer Flexbox untuk dua produk -->
-    <div class="menu-container">
-        <!-- Chocolate Cookiez di kiri -->
-        <div class="product">
-            <img src="{% static 'images/chocoKIEZZ.jpg' %}" alt="Chocolate Cookie" class="product-image">
-            <p>Chocolate Cookie</p>
-            <p>Rp15.000</p>
-        </div>
-
-        <!-- Red Velvet Cookiez di kanan -->
-        <div class="product">
-            <img src="{% static 'images/RVKIEZZ.jpg' %}" alt="Red Velvet Cookie" class="product-image">
-            <p>Red Velvet Cookie</p>
-            <p>Rp18.000</p>
-        </div>
+<!-- Kontainer Flexbox untuk dua produk -->
+<div class="menu-container">
+    <!-- Chocolate Cookiez di kiri -->
+    <div class="product">
+        <img src="{% static 'images/chocoKIEZZ.jpg' %}" alt="Chocolate Cookie" class="product-image">
+        <p>Chocolate Cookie</p>
+        <p>Rp15.000</p>
     </div>
-</body>
-</html>
+
+    <!-- Red Velvet Cookiez di kanan -->
+    <div class="product">
+        <img src="{% static 'images/RVKIEZZ.jpg' %}" alt="Red Velvet Cookie" class="product-image">
+        <p>Red Velvet Cookie</p>
+        <p>Rp18.000</p>
+    </div>
+</div>

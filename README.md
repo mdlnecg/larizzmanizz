@@ -29,5 +29,12 @@ Routing URL pada aplikasi main sudah dilakukan pada (3.), sehingga sekarang dapa
 Menghubungkan dengan PWS dengan membuat project baru, serta menghubungkan melalui memasukkan url ke ALLOWED_HOSTS di settings.py agar dapat diakses dan melakukan push ke pws setelah proyek berhasil dan jika ke depannya ada _updates_.
 
 ### 8. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
-<img width="1520" alt="PBP TUGAS 2" src="https://github.com/user-attachments/assets/89971017-7a98-4723-a68e-46e947b4933f">
+<img width="1607" alt="PBP TUGAS 2 (1)" src="https://github.com/user-attachments/assets/9804aa54-4340-4711-94c8-7db56b120139">
 
+### 9. Jelaskan fungsi git dalam pengembangan perangkat lunak!
+
+
+### 10. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
+
+
+### 11. Mengapa model pada Django disebut sebagai ORM?

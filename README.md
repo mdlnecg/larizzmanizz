@@ -1,4 +1,4 @@
-# TUGAS 2 PBP: Membuat E-Commerce 
+<img width="1520" alt="PBP TUGAS 2" src="https://github.com/user-attachments/assets/40a56595-94df-44db-8624-2347c8128476"># TUGAS 2 PBP: Membuat E-Commerce 
 ## Welcome To LaRizzManizz!
 Look at my E-Commerce --> [LaRizz Manizz](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/)\
 Nama: Madeline Clairine Gultom\
@@ -29,4 +29,5 @@ Routing URL pada aplikasi main sudah dilakukan pada (3.), sehingga sekarang dapa
 Menghubungkan dengan PWS dengan membuat project baru, serta menghubungkan melalui memasukkan url ke ALLOWED_HOSTS di settings.py agar dapat diakses dan melakukan push ke pws setelah proyek berhasil dan jika ke depannya ada _updates_.
 
 ### 8. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
-![Bagan Tugas 2 PBP]("C:\Users\Madeline\Desktop\TP-2\PBP TUGAS 2.png")
+<img width="1520" alt="PBP TUGAS 2" src="https://github.com/user-attachments/assets/89971017-7a98-4723-a68e-46e947b4933f">
+

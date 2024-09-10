@@ -3,19 +3,15 @@
 <h1>Welcome to LaRizzManizz!</h1>
 <p>Ready to RIZZ your heart with our cooKIEZZ</p>
 
-<!-- Kontainer Flexbox untuk dua produk -->
+<!-- Kontainer Flexbox untuk produk -->
 <div class="menu-container">
-    <!-- Chocolate Cookiez di kiri -->
-    <div class="product">
-        <img src="{% static 'images/chocoKIEZZ.jpg' %}" alt="Chocolate Cookie" class="product-image">
-        <p>Chocolate Cookie</p>
-        <p>Rp15.000</p>
-    </div>
-
-    <!-- Red Velvet Cookiez di kanan -->
-    <div class="product">
-        <img src="{% static 'images/RVKIEZZ.jpg' %}" alt="Red Velvet Cookie" class="product-image">
-        <p>Red Velvet Cookie</p>
-        <p>Rp18.000</p>
-    </div>
+    <!-- Loop untuk menampilkan produk-produk dari context -->
+    {% for product in products %}
+        <div class="product">
+            <p>{{ product.name }}</p>
+            <p>Rp{{ product.price }}</p>
+            <p>{{ product.description }}</p>
+            <p>{{ product.rating }}</p>
+        </div>
+    {% endfor %}
 </div>

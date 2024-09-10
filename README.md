@@ -1,4 +1,4 @@
-<img width="1520" alt="PBP TUGAS 2" src="https://github.com/user-attachments/assets/40a56595-94df-44db-8624-2347c8128476"># TUGAS 2 PBP: Membuat E-Commerce 
+# TUGAS 2 PBP: Membuat E-Commerce 
 ## Welcome To LaRizzManizz!
 Look at my E-Commerce --> [LaRizz Manizz](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/)\
 Nama: Madeline Clairine Gultom\
@@ -32,9 +32,10 @@ Menghubungkan dengan PWS dengan membuat project baru, serta menghubungkan melalu
 <img width="1607" alt="PBP TUGAS 2 (1)" src="https://github.com/user-attachments/assets/9804aa54-4340-4711-94c8-7db56b120139">
 
 ### 9. Jelaskan fungsi git dalam pengembangan perangkat lunak!
-
+GIT merupakan tools yang digunakan developer dan programmer sebagai control system untuk pengembangan software. Adapun fungsi utamanya adalah untuk melacak perubahan pada kode sumber, berkolaborasi antardeveloper, dan menjaga riwayat pengembangan perangkat lunak secara sistematis.
 
 ### 10. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
-
+Framework Django sering digunakan untuk mengawali pembelajaran pengembangan perangkat lunak karena mudah dipelajari dan dipahami, Django menyediakan banyak fitur bawaan yang meudahkan untuk kepentingan pengembangan. Django juga memiliki dokumentasi yang lengkap serta komunitas yang luas sehingga jika merasa kesulitan, sudah banyak sumber yang menyediakan cara mengatasi masalah yang kita alami. Django juga menggunakan konsep pola desain MT (Model-Template-View), di mana pola ini mengajarkan untnuk memisahkan logika bisnis (model), antarmuka pengguna (template), dan logika tampilan (view). Selain itu semua, Django juga menggunakan bahasa Python, di mana bahasa tersebut merupakan high-level programming language sehingga tetap mudah dipahami dan digunakan bagi pemula.
 
 ### 11. Mengapa model pada Django disebut sebagai ORM?
+ORM adalah teknik yang memungkinkan developer untuk berinteraksi dengan database menggunakan objek-objek dari bahasa pemrograman. Django ORM (Object-Relational Mapping) adalah bagian dari kerangka kerja Django yang bertanggung jawab untuk memetakan objek Python ke struktur basis data relasional. Disebut ORM karena Django menggunakan mekanisme ORM untuk menghubungkan objek-objek Python dengan database relasional.

@@ -5,7 +5,7 @@ Nama: Madeline Clairine Gultom\
 NPM: 2306207846\
 PBP D
 
-### Penjelasan Progress Mengerjakan Tugas 2 PBP
+## Penjelasan Progress Mengerjakan Tugas 2 PBP
 
 ### 1. Membuat sebuah proyek Django baru
 Membuat direktori lokal dengan nama proyek e-commerce (larizzmanizz), lalu mengaktifkan virtual environment, dan membuat proyek Django baru dengan perintah `django-admin startproject <nama_project> .`, serta mengonfigurasi proyek dengan mengisi ALLOWED_HOSTS di settings.py dan menjalani server.

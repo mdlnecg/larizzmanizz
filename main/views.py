@@ -5,6 +5,9 @@ from .models import Product
 def show_main(request):
     # Menggunakan data produk dari context (sementara hardcoded)
     context = {
+        'name' : 'Madeline Clairine Gultom',
+        'npm' : '2306207846',
+        'class' : 'PBP D',
         'products': [
             {
                 'name': 'Chocolate CoKIEZZ',

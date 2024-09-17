@@ -1,12 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
 
 <h1>Welcome to LaRizzManizz!</h1>
 <p>Ready to RIZZ your heart with our cooKIEZZ</p>
-<p>Tugas 2 PBP {{ name }} {{ npm }} {{ class }}</p>
+<p>{{ name }} {{ npm }} {{ class }}</p>
 <br>
+
+<a href="{% url 'main:create_product_form' %}">
+  <button>Add New Product</button>
+</a>
+
+{% if not products %}
+<p>Belum ada data mood pada larizzmanizz.</p>
+{% else %}
 
 <!-- Kontainer Flexbox untuk produk -->
 <div class="menu-container">
+
     <!-- Loop untuk menampilkan produk-produk dari context -->
     {% for product in products %}
         <div class="product">
@@ -19,3 +30,8 @@
         <br>
     {% endfor %}
 </div>
+{% endif %}
+
+<br />
+
+{% endblock content %}

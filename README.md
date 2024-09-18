@@ -59,16 +59,16 @@ def show_json_by_id(request, id):
 
 ## 6. Mengakses keempat URL di poin 2 menggunakan Postman
 * Format XML
-![Screenshot (616)](https://github.com/user-attachments/assets/ca2f518f-689b-46ff-8a9a-99137e53bcab)
+![Screenshot (616)(1)(1)](https://github.com/user-attachments/assets/135c2e53-1911-4828-be0c-d0b8352adce4)
 
 * Format JSON
-![Screenshot (618)](https://github.com/user-attachments/assets/164d300f-59f7-45f8-a411-74d40f9ca266)
+![Screenshot (618)(1)(1)](https://github.com/user-attachments/assets/4aae34ab-7149-4dad-9bc7-58108c0677b3)
 
 * Format XML by ID
-![Screenshot (617)](https://github.com/user-attachments/assets/7fd616b0-a3e3-456e-8093-10424fbe73e7)
+![Screenshot (617)(1)(1)](https://github.com/user-attachments/assets/8c4352e5-0757-44bf-851b-405cb8e3f2f1)
 
 * Format JSON by ID
-![Screenshot (619)](https://github.com/user-attachments/assets/5e987d83-a36e-4ec4-b5c4-90a85170dbec)
+![Screenshot (619)(1)(1)](https://github.com/user-attachments/assets/36c3d412-0d55-4ef8-88ec-8ccc1cf8b248)
 
 ---
 

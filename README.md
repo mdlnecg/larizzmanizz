@@ -1,11 +1,75 @@
-# TUGAS 2 PBP: Membuat E-Commerce 
-## Welcome To LaRizzManizz!
-Look at my E-Commerce --> [LaRizz Manizz](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/)\
+# Welcome To larizzmanizz!
+## Look at my E-Commerce --> [larizzmanizz](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/)
 Nama: Madeline Clairine Gultom\
 NPM: 2306207846\
 PBP D
 
-## Penjelasan Progress Mengerjakan Tugas 2 PBP
+# TUGAS 3 PBP 2024/2025
+
+## 1. Jelaskan mengapa kita memerlukan _data delivery_ dalam pengimplementasian sebuah platform?
+Penggunaan data delivery diperlukan dalam pengimplementasian sebuah platform karena berperan sebagai pengiriman dan distribusi data dari satu sistem atau komponen ke sistem lainnya dengan cara yang efisien. Data delivery memastikan keberlangsungan komunikasi dapat berjalan secara tepat waktu dan dengan akurasi tinggi. Dengan memiliki sistem pengiriman data yang baik, platform dapat menangani peningkatan jumlah pengguna atau volume data tanpa menurunkan performa. Oleh karena itu, dengan adanya data delivery yang baik, platform dapat terhindar dari masalah-masalah yang dapat mengganggu kelancaran pelayanan kepada pengguna.
+
+## 2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+JSON (JavaScript Object Notation) dan XML (Extensible Markup Language) adalah representasi data yang digunakan dalam melakukan pertukaran data antaraplikasi. XML sudah ada sejak lama dan banyak digunakan di lingkungan perusahaan, sedangkan JSON lebih baru dan lebih populer di kalangan pengembang, terutama yang mencari sintaks sederhana untuk pertukaran data. JSON cenderung lebih simpel dan fleksibel dibandingkan dengan XML. JSON juga memiliki ukuran file yang lebih kecil dibanding XML, serta lebih cepat dalam proses meneruskan data. Dilihat dari strukturnya, JSON lebih simpel sehingga lebih mudah digunakan dan dibaca oleh manusia. Oleh karena itu, JSON lebih baik untuk digunakan dan memang lebih populer dibanding XML.
+
+## 3. Jelaskan fungsi dari method `is_valid()` pada form Django dan mengapa kita membutuhkan method tersebut?
+Method `is_valid()` pada form Django berfungsi untuk memeriksa validitas data, yaitu memeriksa apakah data yang dimasukkan ke dalam form sesuai valid atau tidak. Jika semua field valid sesuai dengan aturan yang ditentukan, maka method ini akan mengembalikan True. Sebaliknya, jika ada field yang tidak valid, method ini akan mengembalikan False.
+
+Kita membutuhkan method ini tentunya untuk memvalidasi data sebelum menyimpan atau memproses data dari pengguna. Tanpa validasi, aplikasi rentan terhadap kesalahan, data yang tidak valid, atau bahkan serangan. Selain itu, Django menyediakan proses validasi secara otomatis dengan `is_valid()`, sehingga mudah diimplementasikan.
+
+## 4. Mengapa kita membutuhkan `csrf_token` saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan `csrf_token` pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+`csrf_token` adalah token acak yang aman dan digunakan untuk mencegah serangan CSRF (Cross-Site Request Forgery), yaitu salah satu jenis kejahatan mengeksploitasi web. 
+
+Kita membutuhkan `csrf_token` saat membuat form di Django tentunya untuk mencegah serangan CSRF itu sendiri, yaitu dengan memasukkan token csrf, server dapat memastikan bahwa hanya permintaan yang berasal dari sumber yang sah saja yang dapat diproses. Selain itu, csrf token juga dimanfaatkan untuk memverifikasi permintaan yang valid.
+
+Jika kita tidak menambahkan `csrf_token` pada form Django, maka aplikasi Django akan rentan terhadap serangan CSRF, yaitu permintaan yang tidak sah dapat masuk begitu saja tanpa melakukan proses verifikasi terlebih dahulu. Oleh karena itu, eksploitasi oleh penyerang akan lebih mudah dilakukan ketika `csrf_token` tidak ditambahkan pada form Django karena mereka dapat mengambil kendali, seperti mengirimkan permintaan POST ke aplikasi Django korban tanpa sepengetahuan korban. Penyerang juga dapat mengirimkan permintaan palsu bersamaan dengan cookie autentikasi yang sah.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step untuk Tugas 3!
+1. Membuat `base.html` sebagai kerangka umum untuk halaman web lainnya, serta menambahkan `% extends 'base.html' %` pada tiap file .html.
+2. Megubah integer menjadi UUID sebagai primary key untuk mengutamakan sisi keamanan aplikasi.
+3. Membuat form input data, yaitu `forms.py` yang berisi kode sebagai berikut.
+```
+from django.forms import ModelForm
+from main.models import Product
+
+class ProductEntryForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'description', 'rating']
+```
+Selain itu, perlu untuk mengubah isi `views.py`, `urls.py`, dan juga membuat berkas HTML baru, yaitu `create_product.html`.
+4. Menambahkan empat fungsi views baru pada `views.py` untuk melihat objek yang sudah ditambahkan dalam format XML, JSON, XML by ID, dan JSON by ID.
+```
+def show_xml(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_xml_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_json_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+```
+
+## 6. Mengakses keempat URL di poin 2 menggunakan Postman
+* Format XML
+
+* Format JSON
+
+* Format XML by ID
+
+* Format JSON by ID
+
+
+---
+
+# TUGAS 2 PBP 2024/2025
 
 ### 1. Membuat sebuah proyek Django baru
 Membuat direktori lokal dengan nama proyek e-commerce (larizzmanizz), lalu mengaktifkan virtual environment, dan membuat proyek Django baru dengan perintah `django-admin startproject <nama_project> .`, serta mengonfigurasi proyek dengan mengisi ALLOWED_HOSTS di settings.py dan menjalani server.

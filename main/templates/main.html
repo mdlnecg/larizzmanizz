@@ -4,12 +4,21 @@
 
 <h1>Welcome to LaRizzManizz!</h1>
 <p>Ready to RIZZ your heart with our cooKIEZZ</p>
-<p>{{ name }} {{ npm }} {{ class }}</p>
+<p>Made by {{ myname }} {{ npm }} {{ class }}</p>
 <br>
 
 <a href="{% url 'main:create_product_form' %}">
   <button>Add New Product</button>
 </a>
+
+<br>
+<br>
+
+<a href="{% url 'main:logout' %}">
+    <button>Logout</button>
+  </a>
+
+  <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 {% if not products %}
 <p>Belum ada data product pada larizzmanizz.</p>

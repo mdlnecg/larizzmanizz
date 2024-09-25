@@ -95,7 +95,7 @@ class Product(models.Model):
 Lalu, membaharui `create_product_form` yang ada di `views.py` agar mencegah tidak langsung menyimpan objek dan melakukan otorisasi agar memastikan objek dimiliki oleh pengguna yang sedang _login_ saja. Selain itu, memperbarui `show_model` agar dapat menampilkan objek yang terasosiasikan dengan pengguna yang sedang login. Selain itu, perlu juga untuk memperbarui `settings.py`, yaitu mengimpor os dan mengatur `DEBUG = no PRODUCTION`.
 
 #### 4. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi
-Mengimpor HttpResponseRedirect, reverse, dan datetime pada `views.py`. Memodifikasi fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat riwayat loginnya. Perlu juga untuk menambahkan potongan kode last_login pada `show_model` juga .delete_cookie pada fungsi logout_user. Setelah itu, tambahkan potongan kode pada `main.html` agar dapat menampilkan data last login.
+Mengimpor HttpResponseRedirect, reverse, dan datetime pada `views.py`. Memodifikasi fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat riwayat loginnya. Perlu juga untuk menambahkan potongan kode last_login pada `show_model` juga `.delete_cookie` pada fungsi `logout_user`. Setelah itu, tambahkan potongan kode pada `main.html` agar dapat menampilkan data last login.
 
 ---
 # Archive Tugas

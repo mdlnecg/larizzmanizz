@@ -1,5 +1,5 @@
 # Welcome To larizzmanizz!
-## Look at my E-Commerce --> [larizzmanizz](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/) 🍪
+## [🍪 larizzmanizz 🍪](http://madeline-clairine-larizzmanizz.pbp.cs.ui.ac.id/)
 Nama: Madeline Clairine Gultom\
 NPM: 2306207846\
 PBP D
@@ -7,7 +7,7 @@ PBP D
 ## TUGAS 4 PBP 2024/2025
 
 ### 1. Apa perbedaan antara `HttpResponseRedirect()` dan `redirect()`?
-Perbedaan yang paling jelas adalah argumennya, di mana `HttpResponseRedirect()` mewajibkan argumennya berupa URL Lengkap, contohnya sebagai berikut.
+Perbedaan yang paling jelas terletak pada argumennya, di mana `HttpResponseRedirect()` mewajibkan argumennya berupa URL Lengkap, contohnya sebagai berikut.
 ```python
 def logout_user(request):
     logout(request)
@@ -92,7 +92,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ...
 ```
-Lalu, membaharui `create_product_form` yang ada di `views.py` agar mencegah tidak langsung menyimpan objek dan melakukan otorisasi agar memastikan objek dimiliki oleh pengguna yang sedang _login_ saja. Selain itu, memperbarui `show_model` agar dapat menampilkan objek yang terasosiasikan dengan pengguna yang sedang login. Selain itu, perlu juga untuk memperbarui `settings.py`, yaitu mengimpor os dan mengatur DEBUG = no PRODUCTION.
+Lalu, membaharui `create_product_form` yang ada di `views.py` agar mencegah tidak langsung menyimpan objek dan melakukan otorisasi agar memastikan objek dimiliki oleh pengguna yang sedang _login_ saja. Selain itu, memperbarui `show_model` agar dapat menampilkan objek yang terasosiasikan dengan pengguna yang sedang login. Selain itu, perlu juga untuk memperbarui `settings.py`, yaitu mengimpor os dan mengatur `DEBUG = no PRODUCTION`.
 
 #### 4. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi
 Mengimpor HttpResponseRedirect, reverse, dan datetime pada `views.py`. Memodifikasi fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat riwayat loginnya. Perlu juga untuk menambahkan potongan kode last_login pada `show_model` juga .delete_cookie pada fungsi logout_user. Setelah itu, tambahkan potongan kode pada `main.html` agar dapat menampilkan data last login.

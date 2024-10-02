@@ -4,6 +4,188 @@ Nama: Madeline Clairine Gultom\
 NPM: 2306207846\
 PBP D
 
+## TUGAS 5 PBP 2024/2025
+
+### 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Dalam CSS, terdapar urutan prioritas untuk menentukan gaya mana yang perlu diterapkan. Urutan prirotias tersebut sebagai berikut.
+* **Inline styles**, yaitu gaya yang ditulis lansung di elemen HTML dengan menggunakan atribut `style` menempati prioritas tertinggi.
+* **ID Selectors**, yaitu selektor ID yang biasa digunakan seperti `#header`.
+* **Class, pseudo-class, dan attribute selectors**, yaitu selector class (`.lexend-body`), pseudo-class (`:hover`), dan attribut selector (`[type="text"]`).
+* **Type selectors dan pseudo-elements**, selector elemen HTML seperti `p, div`, dan pseudo-element seperti `::after`.
+* **Universal selector, combinators, dan inheritance**, selector universal seperti `*` dan combinator seperti `+, >, ~`.
+
+### 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Responsive design penting dalam pengembangan aplikasi web karena dengan adanya responsive design akan memberikan pengalaman pengguna yang optimal terlepas dari perangkat apapun yang sedang digunakan. Jika pengguna merasa nyaman, maka akan terjadi peningkatan akses pada aplikasi web yang dikembangkan. Dengan menggunakan responsive design juga akan menghemat biaya dan waktu, dibanding membuat versi yang terpisah untuk tiap perangkat. **Adapun contoh aplikasi yang sudah responsif, yaitu X (dulunya adalah Twitter) dan webtoon**, karena kedua aplikasi tersebut dapat digunakan dengan nyaman dan baik di berbagai perangkat. **Aplikasi yang belum responsif salah satunya adalah TIX ID**, karena ketika ingin menggunakan di table atau iPad, tampilannya akan sama dengan di ponsel, tentunya lebih nyaman menggunakan aplikasi web yang sudah responsif. Tampilan TIX ID pada iPad sebagai berikut.
+
+### 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+* **Margin**: Ruang di luar batas elemen yang berfungsi untuk jarak antara elemen dan elemen lainnya di sekitarannya, sifatnya transparan dan sering digunakan untuk mengatur jarak antarelemen dalam tata letak. Cara implementasinya sebagai berikut.
+```css
+.element {
+    margin: 20px; /* Mengatur margin semua sisi menjadi 20px */
+}
+```
+* **Border**: Garis yang mengelilingi elemen dan dapat memiliki warna, ketebalan, dan gaya. Biasa digunakan untuk memberikan batasan visual pada elemen, seperti kotak teks atau tombol. Cara implementasinya sebagai berikut.
+```css
+.element {
+    border: 2px solid black; /* Mengatur border dengan ketebalan 2px, tipe solid, dan warna hitam */
+}
+```
+* **Padding**: Ruang di dalam batas elemen antara konten dan border untuk membuat jarak antara konten elemen dengan tepi elemen itu sendiri. Biasa digunakan agar konten lebih mudah dibaca dan terlihat lebih rapih. Cara implementasinya sebagai berikut.
+```css
+.element {
+    padding: 15px; /* Mengatur padding semua sisi menjadi 15px */
+}
+```
+
+### 4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+* **Flexbos (Flexible Box Layout)**: dirancang untuk tata letak suatu dimensi, yaitu mengatur elemen secara horizontal atau vertikal di dalam sebuah *flexbox*. Flexbox memudahkan pengaturan elemen dalam satu arah dan memungkinkan elemen di dalamnya untuk diperluas atau menyusut sesuai ruang yang tersedia. Flexbox sangat berguna untuk mengatur elemen seperti menu navigasi, toolbar, kartu produk, atau tata letak yang bergantung pada elemen berukuran dinamis. Contoh penerapannya sebagai berikut.
+```html
+<div class="flex-container">
+  <div class="box">Item 1</div>
+  <div class="box">Item 2</div>
+</div>
+```
+```css
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* Mengatur item agar tersebar merata */
+  align-items: center; /* Menyelaraskan item di tengah secara vertikal */
+}
+
+.box {
+  flex-grow: 1; /* Item dapat tumbuh untuk mengisi ruang yang tersedia */
+  padding: 10px;
+  background-color: lightblue;
+}
+```
+* **Grid Layout**: dirancang untuk tata letak dua dimensi yang memungkinkan pengaturan elemen dalam baris dan kolom secara bersamaan karena grid layout memungkinkan pembagian area konten menjadi sel, sehingga kita dapat mengatur elemen untuk memenuhi beberapa kolom atau baris. Cocok untuk mengatur tata letak yang lebih kompleks, seperti membuat tata letak halaman web secara keseluruhan. Contoh penerapannya sebagai berikut.
+```html
+<div class="grid-container">
+  <div class="header">Header</div>
+  <div class="menu">Menu</div>
+  <div class="content">Content</div>
+  <div class="footer">Footer</div>
+</div>
+```
+```css
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* 2 kolom, satu kecil dan satu lebih besar */
+  grid-template-rows: auto auto auto; /* 3 baris */
+  grid-template-areas:
+    "header header"
+    "menu content"
+    "footer footer"; /* Penempatan item pada grid area */
+}
+
+.header { grid-area: header; }
+.menu { grid-area: menu; }
+.content { grid-area: content; }
+.footer { grid-area: footer; }
+```
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+1. Implementasi fungsi untuk menghapus dan mengedit product
+Membuat fungsi edit_product dan delete_product pada views.py kemudian routing ke urls.py serta membuat edit_product.html karena mengedit suatu produk membutuhkan halaman baru. 
+Fungsi edit_product dan delete_product pada views.py
+```python
+...
+def edit_product(request, id):
+    # Mendapatkan product entry berdasarkan id
+    product = Product.objects.get(pk = id)
+
+    # Set mood entry sebagai instance dari form
+    form = ProductEntryForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_model'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    # Mendapatkan product berdasarkan id
+    product = Product.objects.get(pk = id)
+
+    # Hapus product
+    product.delete()
+
+    # Kembali ke halaman awal 
+    return HttpResponseRedirect(reverse('main:show_model'))
+```
+
+Routing ke urls.py 
+```python
+...
+from main.views import ..., edit_product, delete_product
+...
+urlpatterns = [
+    ...,
+    path('edit-product/<uuid:id>', edit_product, name='edit_product'),
+    path('delete/<uuid:id>', delete_product, name='delete_product')
+]
+```
+
+Isi dari edit_product.html
+```html
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<title>Edit Mood</title>
+{% endblock meta %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div class="flex flex-col min-h-screen bg-[#FFF1DB]">
+  <div class="container mx-auto px-4 py-8 mt-16 max-w-xl">
+    <h1 class="text-3xl font-bold text-center mb-8 text-black">Edit Product Entry</h1>
+  
+    <div class="bg-[#FFF8F3] rounded-lg p-6 form-style">
+      <form method="POST" class="space-y-6">
+          {% csrf_token %}
+          {% for field in form %}
+              <div class="flex flex-col">
+                  <label for="{{ field.id_for_label }}" class="mb-2 font-semibold text-gray-700">
+                      {{ field.label }}
+                  </label>
+                  <div class="w-full">
+                      {{ field }}
+                  </div>
+                  {% if field.help_text %}
+                      <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+                  {% endif %}
+                  {% for error in field.errors %}
+                      <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                  {% endfor %}
+              </div>
+          {% endfor %}
+          <div class="flex justify-center mt-6">
+              <button type="submit" class="bg-[#B5C18E] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#809671] transition duration-300 ease-in-out w-full">
+                  Edit Product Entry
+              </button>
+          </div>
+      </form>
+  </div>
+  </div>
+</div>
+{% endblock %}
+```
+
+2. Kustomisasi desain pada template HTML yang telah dibuat pada tugas-tugas sebelumnya menggunakan CSS framework, yaitu Tailwind
+    1. Halaman login
+    2. Halaman register
+    3. Halaman daftar produk
+        * jika belum ada produk
+        * ⁠jika sudah ada produk
+    4. Navigation bar
+        * versi mobile
+        * ⁠versi desktop
+
+---
+# Archive Tugas
+
 ## TUGAS 4 PBP 2024/2025
 
 ### 1. Apa perbedaan antara `HttpResponseRedirect()` dan `redirect()`?
@@ -98,8 +280,6 @@ Lalu, membaharui `create_product_form` yang ada di `views.py` agar mencegah tida
 Mengimpor HttpResponseRedirect, reverse, dan datetime pada `views.py`. Memodifikasi fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat riwayat loginnya. Perlu juga untuk menambahkan potongan kode last_login pada `show_model` juga `.delete_cookie` pada fungsi `logout_user`. Setelah itu, tambahkan potongan kode pada `main.html` agar dapat menampilkan data last login.
 
 ---
-# Archive Tugas
-
 ## TUGAS 3 PBP 2024/2025
 
 ### 1. Jelaskan mengapa kita memerlukan _data delivery_ dalam pengimplementasian sebuah platform?

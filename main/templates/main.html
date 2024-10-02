@@ -1,49 +1,39 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
 
+{% block meta %}
 <title>larizzmanizz</title>
-<h1>Welcome To larizzmanizz!</h1>
-<p>Ready to RIZZ your heart with our cookiez</p>
-<p>Made by {{ myname }} {{ npm }} {{ class }}</p>
-<br>
+{% endblock meta %}
+{% block content %}
+{% include 'navbar.html' %}
 
-<a href="{% url 'main:create_product_form' %}">
-  <button>Add New Product</button>
-</a>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
 
-<br>
-<br>
-
-<a href="{% url 'main:logout' %}">
-    <button>Logout</button>
-  </a>
-
-  <h5>Sesi terakhir login: {{ last_login }}</h5>
-
-{% if not products %}
-<p>Belum ada data product pada larizzmanizz.</p>
-{% else %}
-
-<!-- Kontainer Flexbox untuk produk -->
-<div class="menu-container">
-
-<!-- Kontainer Flexbox untuk produk -->
-<div class="menu-container">
-    <!-- Loop untuk menampilkan produk-produk dari context -->
-    {% for product in products %}
-        <div class="product">
-            <p><strong>{{ product.name }}</strong></p>
-            <p>Rp{{ product.price }}</p>
-            <p>{{ product.description }}</p>
-            <p>{{ product.rating }}</p>
-        </div>
-
-        <br>
-    {% endfor %}
+<div class="min-h-screen bg-[#FFF1DB] font-lexend overflow-hidden">
+  <div class="overflow-x-hidden px-4 md:px-8 pb-8 pt-24 min-h-screen bg-[#FFF1DB] flex flex-col">
+    
+    
+    {% if not products %}
+    <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+      <p class="text-center text-gray-600 mt-4">Belum ada data product nih!<br></br></p>
+      <img src="{% static 'image/x.jpeg' %}" alt="Sad face" class="w-32 h-32 mb-4"/>
+    </div>
+    {% else %}
+    <div class="grid grid-cols-3 gap-6 w-full mb-12">
+      {% for product in products %}
+      {% include 'card_product.html' with product_entry=product_entry %}
+      {% endfor %}
+    </div>
+    <div class="flex justify-center items-center mb-6">
+      <a href="{% url 'main:create_product_form' %}" class="bg-[#B5C18E] hover:bg-[#809671] text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        Add New Product Now!
+      </a>
+    </div>
+    {% endif %}
+    <p class="mb-2 text-black text-center">Last Login: {{last_login}}</p>
+    <h5 class="text-center text-black font-lexend font-semibold mb-4">Made by Madeline Clairine Gultom 2306207846 PBP-D</h5>
+  </div>
 </div>
-{% endif %}
-
-<br />
-
 {% endblock content %}

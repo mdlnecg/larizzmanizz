@@ -16,6 +16,7 @@ Dalam CSS, terdapar urutan prioritas untuk menentukan gaya mana yang perlu diter
 
 ### 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
 Responsive design penting dalam pengembangan aplikasi web karena dengan adanya responsive design akan memberikan pengalaman pengguna yang optimal terlepas dari perangkat apapun yang sedang digunakan. Jika pengguna merasa nyaman, maka akan terjadi peningkatan akses pada aplikasi web yang dikembangkan. Dengan menggunakan responsive design juga akan menghemat biaya dan waktu, dibanding membuat versi yang terpisah untuk tiap perangkat. **Adapun contoh aplikasi yang sudah responsif, yaitu X (dulunya adalah Twitter) dan webtoon**, karena kedua aplikasi tersebut dapat digunakan dengan nyaman dan baik di berbagai perangkat. **Aplikasi yang belum responsif salah satunya adalah TIX ID**, karena ketika ingin menggunakan di table atau iPad, tampilannya akan sama dengan di ponsel, tentunya lebih nyaman menggunakan aplikasi web yang sudah responsif. Tampilan TIX ID pada iPad sebagai berikut.
+![WhatsApp Image 2024-10-02 at 11 46 19_3cd8f86b](https://github.com/user-attachments/assets/52343eb2-832d-43ff-823c-fe079d8ab298)
 
 ### 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
 * **Margin**: Ruang di luar batas elemen yang berfungsi untuk jarak antara elemen dan elemen lainnya di sekitarannya, sifatnya transparan dan sering digunakan untuk mengatur jarak antarelemen dalam tata letak. Cara implementasinya sebagai berikut.
@@ -175,13 +176,29 @@ Isi dari edit_product.html
 
 2. Kustomisasi desain pada template HTML yang telah dibuat pada tugas-tugas sebelumnya menggunakan CSS framework, yaitu Tailwind
     1. Halaman login
+![Screenshot 2024-10-02 114303](https://github.com/user-attachments/assets/cb5726b2-ec6f-4c3c-87c3-3c56a2422527)
+
     2. Halaman register
+![Screenshot 2024-10-02 114419](https://github.com/user-attachments/assets/d1e3f1f2-f673-4ea2-8de8-c6d0d528eb98)
+
     3. Halaman daftar produk
         * jika belum ada produk
+![Screenshot 2024-10-02 114438](https://github.com/user-attachments/assets/e8a0948b-4be6-476a-b83e-f254f4d9e66d)
         * ⁠jika sudah ada produk
-    4. Navigation bar
+![Screenshot 2024-10-02 114528](https://github.com/user-attachments/assets/53a9817c-50d4-4304-80ba-b98537360547)
+
+    4. Halaman menambahn produk
+![Screenshot 2024-10-02 114505](https://github.com/user-attachments/assets/067a9c27-dfed-401a-8db2-1fea53710d9b)
+
+    5. Halaman mengedit produk
+![Screenshot 2024-10-02 114539](https://github.com/user-attachments/assets/273c3fd7-b11f-4cf3-8b24-78dae3ae0c64)
+
+    6. Navigation bar
         * versi mobile
+![WhatsApp Image 2024-10-02 at 11 50 48_c0c2d960](https://github.com/user-attachments/assets/3aa5a7da-7d01-4305-89b7-85de7fad5df2)
+
         * ⁠versi desktop
+![Screenshot 2024-10-02 115123](https://github.com/user-attachments/assets/fe13a408-5221-48b1-ae54-834df6ff920d)
 
 ---
 # Archive Tugas

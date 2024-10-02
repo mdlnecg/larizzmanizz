@@ -26,12 +26,12 @@
       {% include 'card_product.html' with product_entry=product_entry %}
       {% endfor %}
     </div>
+    {% endif %}
     <div class="flex justify-center items-center mb-6">
       <a href="{% url 'main:create_product_form' %}" class="bg-[#B5C18E] hover:bg-[#809671] text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         Add New Product Now!
       </a>
     </div>
-    {% endif %}
     <p class="mb-2 text-black text-center">Last Login: {{last_login}}</p>
     <h5 class="text-center text-black font-lexend font-semibold mb-4">Made by Madeline Clairine Gultom 2306207846 PBP-D</h5>
   </div>

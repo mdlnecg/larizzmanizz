@@ -187,7 +187,7 @@ Isi dari edit_product.html
         * ⁠jika sudah ada produk
 ![Screenshot 2024-10-02 114528](https://github.com/user-attachments/assets/53a9817c-50d4-4304-80ba-b98537360547)
 
-    4. Halaman menambahn produk
+    4. Halaman menambah produk
 ![Screenshot 2024-10-02 114505](https://github.com/user-attachments/assets/067a9c27-dfed-401a-8db2-1fea53710d9b)
 
     5. Halaman mengedit produk
@@ -197,7 +197,7 @@ Isi dari edit_product.html
         * versi mobile
 ![WhatsApp Image 2024-10-02 at 11 50 48_c0c2d960](https://github.com/user-attachments/assets/3aa5a7da-7d01-4305-89b7-85de7fad5df2)
 
-        * ⁠versi desktop
+        * versi desktop
 ![Screenshot 2024-10-02 115123](https://github.com/user-attachments/assets/fe13a408-5221-48b1-ae54-834df6ff920d)
 
 ---

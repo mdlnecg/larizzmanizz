@@ -92,7 +92,7 @@ def edit_product(request, id):
     # Mendapatkan product entry berdasarkan id
     product = Product.objects.get(pk = id)
 
-    # Set mood entry sebagai instance dari form
+    # Set product entry sebagai instance dari form
     form = ProductEntryForm(request.POST or None, instance=product)
 
     if form.is_valid() and request.method == "POST":

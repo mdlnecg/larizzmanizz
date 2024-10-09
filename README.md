@@ -4,7 +4,147 @@ Nama: Madeline Clairine Gultom\
 NPM: 2306207846\
 PBP D
 
-## TUGAS 5 PBP 2024/2025
+<details><summary>TUGAS 6: JavaScript dan AJAX</summary>
+TUGAS 6 PBP 2024/2025
+
+### 1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+Beberapa manfaat yang didapatkan ketika menggunakan JavaScript dalam pengembangan aplikasi web adalah sebagai berikut.
+1. Interaktif dan dinamis: JavaScript memberikan respons instan kepada pengguna yang dapat meningkatkan pengalaman pengguna, yaitu pengguna tidak perlu memuat ulang jika ingin memperoleh pembaruan _real-time_.
+2. Animasi dan Efek Visual yang Menarik: Dengan bantuan CSS dan HTML5, JavaScript memungkinkan pengembang untuk menciptakan efek-efek yang menarik seperti animasi slide, animasi perubahan warna, efek hover, dan lainnya.
+3. Pengiriman dan Penerimaan Data: JavaScript dapat digunakan untuk melakukan permintaan dan menerima data dari server menggunakan teknologi AJAX (Asynchronous JavaScript and XML) atau menggunakan Fetch API yang memungkinkan pengembang untuk mengambil data dari sumber eksternal seperti API atau server, dan memperbarui halaman web tanpa harus memuat ulang seluruh halaman.
+4. Mudah dipelajari dan digunakan: Sintaks JavaScript terinspirasi dari bahasa pemrograman Java yang cenderung lebih mudah digunakan dan dikodekan.
+
+### 2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Fungsi dari penggunaan `await` ketika menggunakan `fetch()` adalah untuk menunggu hasil permintaan HTTP yang dilakukan oleh `fetch()` sebelum lanjut ke perintah ata baris kode selanjutnya. `fetch()` sendiri adalah suatu fungsi asinkronus yang mengembalikan sebuah _promise_. Dengan menggunakan `await`, kita dapat memastikan bahwa program akan menunggu sampai _promise_ selesai diproses. Jika tidak menggunakan `await`, tentunya akan menimbulkan beberapa masalah, seperti _promise_ akan dikembalikan tanpa menunggu hasil dari permintaan HTTP-nya.
+
+### 3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+Kita menggunakan decorator `csrf_exempt` karena ingin menghindari pengecekan CSRF Token pada beberapa request, seperti add_product_entry_ajax karena pada request POST, Django secara default akan memeriksa apakah request tersebut menyertakan CSRF token yang valid. Jika tidak, Django akan menolak request tersebut dan mengembalikan 403 Forbidden. Namun, ketika kita mengirimkan AJAX POST request, khususnya dari JavaScript, kita mungkin tidak menyertakan CSRF token secara langsung, yang menyebabkan request tersebut ditolak, sehingga kita perlu menonaktifkan sementara pengecekan token CSRF ini. Namun, perlu diperhatikan bahwa ketika melakukan `csrf _exempt` ini maka kita sedang membuka celah keamanan sehingga perlu diterapkan secara hati-hati.
+
+### 4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+Pembersihan data input pengguna perlu dilakukan di backend karena mempertimbangkan dari sisi keamanan. Jika hanya melakukan pembersihan di frontend saja, kemungkinan manipulasi data dan ancaman terhadap keamanan akan menjadi rentan karena data masih dapat diakses. Oleh karena itu, pembersihan yang dilakukan di backend akan lebih menjamin dari sisi keamanan data.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step!
+1.  AJAX GET
+* Ubahlah kode cards data product agar dapat mendukung AJAX GET.
+Menambahkan fungsi baru agar dapat menambahkan produk menggunakan AJAX dengan menggunakan dekorator `csrf_exempt` dan `require_POOST` di `views.py`. Tidak lupa juga untuk selalu melakukan routing pada `urls.py`.
+```python
+...
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+
+...
+
+@csrf_exempt
+@require_POST
+def add_product_entry_ajax(request):
+    name = strip_tags(request.POST.get("name"))
+    description = strip_tags(request.POST.get("description"))
+    price = strip_tags(request.POST.get("price"))
+    rating = strip_tags(request.POST.get("rating"))
+    user = request.user
+
+    new_product = Product(
+        name=name, user=user, price=price, 
+        description=description, rating=rating
+    )
+    new_product.save()
+
+    return HttpResponse(b"CREATED", status=201)
+```
+
+* Lakukan pengambilan data product menggunakan AJAX GET. Pastikan bahwa data yang diambil hanyalah data milik pengguna yang logged-in.
+Mengganti cara mengambil data di fungsi `show_xml` dan `show_json` menjadi sebagai berikut.
+```python
+data = Product.objects.filter(user=request.user)
+```
+Lalu, mengganti cara menampilkan data produk menjadi berikut pada `main.html`.
+```html
+<div id="product_entry_cards"></div>
+```
+Agar memastikan data yang diambil hanya data milik pengguna yang sedang logged-in, set `user=user` pada fungsi `add_product_entry_ajax` sebagai berikut.
+```python
+def add_product_entry_ajax(request):
+    ...
+
+    new_product = Product(
+        name=name, user=user, price=price, 
+        description=description, rating=rating
+    )
+    ...
+```
+
+2. AJAX POST
+* Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan product.
+```html
+    <button 
+    data-modal-target="crudModal" 
+    data-modal-toggle="crudModal" 
+    class="btn bg-[#B5C18E] hover:bg-[#809671] text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105" onclick="showModal();">
+    Add New Product Entry by AJAX
+    </button>
+```
+Fungsi `showModal()` untuk membuka modal dan `hideModal()` untuk menutup modal sebagai berikut.
+```javascript
+function showModal() {
+      const modal = document.getElementById('crudModal');
+      const modalContent = document.getElementById('crudModalContent');
+
+      modal.classList.remove('hidden'); 
+      setTimeout(() => {
+        modalContent.classList.remove('opacity-0', 'scale-95');
+        modalContent.classList.add('opacity-100', 'scale-100');
+      }, 50); 
+  }
+
+  function hideModal() {
+      const modal = document.getElementById('crudModal');
+      const modalContent = document.getElementById('crudModalContent');
+
+      modalContent.classList.remove('opacity-100', 'scale-100');
+      modalContent.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 150); 
+  }
+
+  document.getElementById("cancelButton").addEventListener("click", hideModal);
+  document.getElementById("closeModalBtn").addEventListener("click", hideModal);
+```
+* Buatlah fungsi view baru untuk menambahkan product baru ke dalam basis data.
+Fungsi view baru tersebut adalah fungsi `add_product_entry_ajax` yang telah dijelaskan sebelumnya.
+
+* Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+Membuat routing pada `urls.py` kepada fungsi `add_product_entry_ajax` sebagai berikut.
+```python
+...
+from main.views import add_product_entry_ajax
+
+app_name = 'main'
+
+urlpatterns = [
+    ...,
+    path('add-product-entry-ajax', add_product_entry_ajax, name='add_product_entry_ajax'),
+]
+```
+
+* Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+Kita dapat menghubungkan form yang telah dibuat di dalam modal ke path `add-product-entry-ajax` dengan `fetch()` sebagai berikut.
+```javascript
+fetch("{% url 'main:add_product_entry_ajax' %}", {
+      method: "POST",
+      body: new FormData(document.querySelector('#productEntryForm')),
+    })
+    .then(response => refreshProductEntries())
+```
+
+* Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar product terbaru tanpa reload halaman utama secara keseluruhan.
+Data sudah ditambahkan secara async dengan fungsi `refreshProductEntries` sehingga kita tidak perlu memuat ulang halaman secara keseluruhan ketika product baru ditambahkan.
+
+</details><br/>
+
+<details><summary>TUGAS 5: Desain Web menggunakan HTML, CSS dan Framework CSS</summary>
+TUGAS 5 PBP 2024/2025
 
 ### 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
 Dalam CSS, terdapar urutan prioritas untuk menentukan gaya mana yang perlu diterapkan. Urutan prirotias tersebut sebagai berikut.
@@ -199,11 +339,10 @@ Isi dari edit_product.html
 
         * versi desktop
 ![Screenshot 2024-10-02 115123](https://github.com/user-attachments/assets/fe13a408-5221-48b1-ae54-834df6ff920d)
+</details><br/>
 
----
-# Archive Tugas
-
-## TUGAS 4 PBP 2024/2025
+<details><summary>TUGAS 4: Implementasi Autentikasi, Session, dan Cookies pada Django</summary>
+TUGAS 4 PBP 2024/2025
 
 ### 1. Apa perbedaan antara `HttpResponseRedirect()` dan `redirect()`?
 Perbedaan yang paling jelas terletak pada argumennya, di mana `HttpResponseRedirect()` mewajibkan argumennya berupa URL Lengkap, contohnya sebagai berikut.
@@ -295,9 +434,10 @@ Lalu, membaharui `create_product_form` yang ada di `views.py` agar mencegah tida
 
 #### 4. Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi
 Mengimpor HttpResponseRedirect, reverse, dan datetime pada `views.py`. Memodifikasi fungsi `login_user` dengan menambahkan cookie yang bernama `last_login` untuk melihat riwayat loginnya. Perlu juga untuk menambahkan potongan kode last_login pada `show_model` juga `.delete_cookie` pada fungsi `logout_user`. Setelah itu, tambahkan potongan kode pada `main.html` agar dapat menampilkan data last login.
+</details><br/>
 
----
-## TUGAS 3 PBP 2024/2025
+<details><summary>TUGAS 3: Implementasi Form dan Data Delivery pada Django</summary>
+TUGAS 3 PBP 2024/2025
 
 ### 1. Jelaskan mengapa kita memerlukan _data delivery_ dalam pengimplementasian sebuah platform?
 Penggunaan data delivery diperlukan dalam pengimplementasian sebuah platform karena berperan sebagai pengiriman dan distribusi data dari satu sistem atau komponen ke sistem lainnya dengan cara yang efisien. Data delivery memastikan keberlangsungan komunikasi dapat berjalan secara tepat waktu dan dengan akurasi tinggi. Dengan memiliki sistem pengiriman data yang baik, platform dapat menangani peningkatan jumlah pengguna atau volume data tanpa menurunkan performa. Oleh karena itu, dengan adanya data delivery yang baik, platform dapat terhindar dari masalah-masalah yang dapat mengganggu kelancaran pelayanan kepada pengguna.
@@ -362,9 +502,10 @@ def show_json_by_id(request, id):
 
 * Format JSON by ID
 ![Screenshot 2024-09-18 112401](https://github.com/user-attachments/assets/9a9ae767-e4bd-44b7-bdf7-ac0fae0b9870)
+</details><br/>
 
----
-## TUGAS 2 PBP 2024/2025
+<details><summary>TUGAS 2: Implementasi Model-View-Template (MVT) pada Django</summary>
+TUGAS 2 PBP 2024/2025
 
 ### 1. Membuat sebuah proyek Django baru
 Membuat direktori lokal dengan nama proyek e-commerce (larizzmanizz), lalu mengaktifkan virtual environment, dan membuat proyek Django baru dengan perintah `django-admin startproject <nama_project> .`, serta mengonfigurasi proyek dengan mengisi ALLOWED_HOSTS di settings.py dan menjalani server.
@@ -398,3 +539,4 @@ Framework Django sering digunakan untuk mengawali pembelajaran pengembangan pera
 
 ### 11. Mengapa model pada Django disebut sebagai ORM?
 ORM adalah teknik yang memungkinkan developer untuk berinteraksi dengan database menggunakan objek-objek dari bahasa pemrograman. Django ORM (Object-Relational Mapping) adalah bagian dari kerangka kerja Django yang bertanggung jawab untuk memetakan objek Python ke struktur basis data relasional. Disebut ORM karena Django menggunakan mekanisme ORM untuk menghubungkan objek-objek Python dengan database relasional.
+</details>

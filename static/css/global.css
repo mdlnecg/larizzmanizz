@@ -36,3 +36,10 @@
     background-size: 200% 100%;
     animation: shine 3s infinite;
 }
+
+.cookie-icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  vertical-align: left;
+}

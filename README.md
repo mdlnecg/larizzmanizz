@@ -18,15 +18,15 @@ Beberapa manfaat yang didapatkan ketika menggunakan JavaScript dalam pengembanga
 Fungsi dari penggunaan `await` ketika menggunakan `fetch()` adalah untuk menunggu hasil permintaan HTTP yang dilakukan oleh `fetch()` sebelum lanjut ke perintah ata baris kode selanjutnya. `fetch()` sendiri adalah suatu fungsi asinkronus yang mengembalikan sebuah _promise_. Dengan menggunakan `await`, kita dapat memastikan bahwa program akan menunggu sampai _promise_ selesai diproses. Jika tidak menggunakan `await`, tentunya akan menimbulkan beberapa masalah, seperti _promise_ akan dikembalikan tanpa menunggu hasil dari permintaan HTTP-nya.
 
 ### 3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
-Kita menggunakan decorator `csrf_exempt` karena ingin menghindari pengecekan CSRF Token pada beberapa request, seperti add_product_entry_ajax karena pada request POST, Django secara default akan memeriksa apakah request tersebut menyertakan CSRF token yang valid. Jika tidak, Django akan menolak request tersebut dan mengembalikan 403 Forbidden. Namun, ketika kita mengirimkan AJAX POST request, khususnya dari JavaScript, kita mungkin tidak menyertakan CSRF token secara langsung, yang menyebabkan request tersebut ditolak, sehingga kita perlu menonaktifkan sementara pengecekan token CSRF ini. Namun, perlu diperhatikan bahwa ketika melakukan `csrf _exempt` ini maka kita sedang membuka celah keamanan sehingga perlu diterapkan secara hati-hati.
+Kita menggunakan decorator `csrf_exempt` karena ingin menghindari pengecekan CSRF Token pada beberapa request, seperti add_product_entry_ajax karena pada request POST, Django secara default akan memeriksa apakah request tersebut menyertakan CSRF token yang valid. Jika tidak, Django akan menolak request tersebut dan mengembalikan 403 Forbidden. Namun, ketika kita mengirimkan AJAX POST request, khususnya dari JavaScript, kita mungkin tidak menyertakan CSRF token secara langsung, yang menyebabkan request tersebut ditolak, sehingga kita perlu menonaktifkan sementara pengecekan token CSRF ini. Namun, perlu diperhatikan bahwa ketika melakukan `csrf_exempt` ini maka kita sedang membuka celah keamanan sehingga perlu diterapkan secara hati-hati.
 
 ### 4. Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
 Pembersihan data input pengguna perlu dilakukan di backend karena mempertimbangkan dari sisi keamanan. Jika hanya melakukan pembersihan di frontend saja, kemungkinan manipulasi data dan ancaman terhadap keamanan akan menjadi rentan karena data masih dapat diakses. Oleh karena itu, pembersihan yang dilakukan di backend akan lebih menjamin dari sisi keamanan data.
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step!
 1.  AJAX GET
-* Ubahlah kode cards data product agar dapat mendukung AJAX GET.
-Menambahkan fungsi baru agar dapat menambahkan produk menggunakan AJAX dengan menggunakan dekorator `csrf_exempt` dan `require_POOST` di `views.py`. Tidak lupa juga untuk selalu melakukan routing pada `urls.py`.
+* Ubahlah kode cards data product agar dapat mendukung AJAX GET.\
+Menambahkan fungsi baru agar dapat menambahkan produk menggunakan AJAX dengan menggunakan dekorator `csrf_exempt` dan `require_POST` di `views.py`. Tidak lupa juga untuk selalu melakukan routing pada `urls.py`.
 ```python
 ...
 from django.views.decorators.csrf import csrf_exempt
@@ -52,7 +52,7 @@ def add_product_entry_ajax(request):
     return HttpResponse(b"CREATED", status=201)
 ```
 
-* Lakukan pengambilan data product menggunakan AJAX GET. Pastikan bahwa data yang diambil hanyalah data milik pengguna yang logged-in.
+* Lakukan pengambilan data product menggunakan AJAX GET. Pastikan bahwa data yang diambil hanyalah data milik pengguna yang logged-in.\
 Mengganti cara mengambil data di fungsi `show_xml` dan `show_json` menjadi sebagai berikut.
 ```python
 data = Product.objects.filter(user=request.user)
@@ -111,10 +111,10 @@ function showModal() {
   document.getElementById("cancelButton").addEventListener("click", hideModal);
   document.getElementById("closeModalBtn").addEventListener("click", hideModal);
 ```
-* Buatlah fungsi view baru untuk menambahkan product baru ke dalam basis data.
+* Buatlah fungsi view baru untuk menambahkan product baru ke dalam basis data.\
 Fungsi view baru tersebut adalah fungsi `add_product_entry_ajax` yang telah dijelaskan sebelumnya.
 
-* Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+* Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.\
 Membuat routing pada `urls.py` kepada fungsi `add_product_entry_ajax` sebagai berikut.
 ```python
 ...
@@ -128,7 +128,7 @@ urlpatterns = [
 ]
 ```
 
-* Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+* Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.\
 Kita dapat menghubungkan form yang telah dibuat di dalam modal ke path `add-product-entry-ajax` dengan `fetch()` sebagai berikut.
 ```javascript
 fetch("{% url 'main:add_product_entry_ajax' %}", {
@@ -138,7 +138,7 @@ fetch("{% url 'main:add_product_entry_ajax' %}", {
     .then(response => refreshProductEntries())
 ```
 
-* Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar product terbaru tanpa reload halaman utama secara keseluruhan.
+* Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar product terbaru tanpa reload halaman utama secara keseluruhan.\
 Data sudah ditambahkan secara async dengan fungsi `refreshProductEntries` sehingga kita tidak perlu memuat ulang halaman secara keseluruhan ketika product baru ditambahkan.
 
 </details><br/>
